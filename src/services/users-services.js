@@ -78,10 +78,10 @@ const login = async (req, res) => {
     }
 
     // Gera token JWT
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
+    const token = jwt.sign({ id: user_id }, process.env.JWT_SECRET, { expiresIn: '1d' });
 
     return res.status(200).json({ message: "Login bem-sucedido", token });
 };
 
 
-export default { register, login };
+export default user-services;

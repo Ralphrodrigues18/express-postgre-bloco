@@ -1,11 +1,11 @@
-
+import notasServices from "../services/notas-services"
 
 const criaNotas = (req, res) => {
-    
+    notasServices.notas(req, res);
 }
 
 const listarItens = (req, res) => {
-
+    notasServices.listas(req, res);
 }
 
 const detalhesItem = (req, res) => {

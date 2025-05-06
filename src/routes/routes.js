@@ -17,16 +17,16 @@ router.post("/register", usuarioController.salvaConta);
 router.post("/login", usuarioController.liberaLogin);
 
 //notas
-router.post("/notas", notasController.criaNotas);
+router.post("/notas", authMiddleware, notasController.criaNotas);
 
-router.get("/listas", notasController.listarItens);
+router.get("/listas", authMiddleware, notasController.listarItens);
 
-router.get("/detalhes/:id", notasController.detalhesItem);
+router.get("/detalhes/:id", authMiddleware, notasController.detalhesItem);
 
-router.put("/atualizacao/:id", notasController.atualizacao);
+router.put("/atualizacao/:id", authMiddleware, notasController.atualizacao);
 
-router.patch("/atualiza/:id", notasController.atualiza);
+router.patch("/atualiza/:id", authMiddleware, notasController.atualiza);
 
-router.delete("/deleta/:id", notasController.deletarItem);
+router.delete("/deleta/:id", authMiddleware, notasController.deletarItem);
 
 export default router

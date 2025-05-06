@@ -27,3 +27,5 @@ const Notas = sequelize.define('Notas', {
     tableName: 'notas', 
     timestamps: false, 
   });
+
+  export default Notas
