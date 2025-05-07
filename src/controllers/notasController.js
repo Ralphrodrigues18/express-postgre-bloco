@@ -9,18 +9,18 @@ const listarItens = (req, res) => {
 }
 
 const detalhesItem = (req, res) => {
-
+    notasServices.procuraNota(req, res);
 }
-const atualizacao = (req, res) => {
-
+const atualizaItem = (req, res) => {
+    notasServices.atualizaNota(req, res);
 }
-const atualiza = (req, res) => {
-
+const corrigirItem = (req, res) => {
+    notasServices.corrigeNota(req, res);
 }
 
 const deletarItem = (req, res) => {
-
+    notasServices.deletaNota(req, res);
 }
 
 
-export default {criaNotas,listarItens, detalhesItem, atualizacao, atualiza,deletarItem}
+export default {criaNotas,listarItens, detalhesItem, atualizaItem, corrigirItem ,deletarItem}
