@@ -21,6 +21,6 @@ router.get("/listas", authMiddleware, notasController.listarItens);
 router.get("/procuraNota/:id", authMiddleware, notasController.detalhesItem);
 router.put("/atualizaNota/:id", authMiddleware, notasController.atualizaItem);
 router.patch("/corrigirNota/:id", authMiddleware, notasController.corrigirItem);
-router.delete("/deletaNota/:id", authMiddleware, notasController.deletarItem);
+router.delete("/deletarNota/:id", authMiddleware, notasController.deletarItem);
 
 export default router

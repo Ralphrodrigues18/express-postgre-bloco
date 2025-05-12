@@ -1,12 +1,12 @@
-import service from'../services/users-services.js';
+import usersServices from '../services/users-services.js';
 
 const salvaConta = (req, res) => {
-    service.register(req, res);
+    usersServices.register(req, res);
 }
 
 
 const liberaLogin = (req, res) => {
-    service.login(req, res);
+    usersServices.login(req, res);
 }
 
 export default {liberaLogin, salvaConta}

@@ -48,10 +48,10 @@ const listas = async (req, res) => {
 // Retorna os detalhes de uma nota específica
 const procuraNota = async (req, res) => {
     try {
-        const { id_nota } = req.params;
+        const { id } = req.params;
 
         const nota = await Notas.findOne({
-             where: { id_nota }
+             where: { id_nota: id }
         });
 
         if (!nota) {
@@ -67,7 +67,7 @@ const procuraNota = async (req, res) => {
 // Atualiza completamente uma nota (PUT)
 const atualizaNota = async (req, res) => {
     try {
-        const { id_nota } = req.params;
+        const { id } = req.params;
         const { titulo, corpo } = req.body;
 
         if (!titulo || !corpo) {
@@ -75,7 +75,7 @@ const atualizaNota = async (req, res) => {
         }
         const [atualizadas] = await Notas.update({
              titulo, corpo 
-            }, { where: { id_nota } 
+            }, { where: { id_nota: id } 
         });
 
         if (atualizadas === 0) {
@@ -91,14 +91,14 @@ const atualizaNota = async (req, res) => {
 // Corrige/Atualiza parcialmente uma nota (PATCH)
 const corrigirNota = async (req, res) => {
     try {
-        const { id_nota } = req.params;
+        const { id } = req.params;
         const dadosAtualizados = req.body;
 
         if (!dadosAtualizados || Object.keys(dadosAtualizados).length === 0) {
             return res.status(400).json({ message: "Nenhum dado fornecido para atualização." });
         }
 
-        const [corrigidas] = await Notas.update(dadosAtualizados, { where: { id_nota } });
+        const [corrigidas] = await Notas.update(dadosAtualizados, { where: { id_nota: id } });
 
         if (corrigidas === 0) {
             return res.status(404).json({ message: "Nota não encontrada ou dados não atualizados." });
@@ -113,9 +113,9 @@ const corrigirNota = async (req, res) => {
 // Deleta uma nota
 const deletarNota = async (req, res) => {
     try {
-        const { id_nota } = req.params;
+        const { id } = req.params;
 
-        const deletadas = await Notas.destroy({ where: { id_nota } });
+        const deletadas = await Notas.destroy({ where: { id_nota: id } });
 
         if (deletadas === 0) {
             return res.status(404).json({ message: "Nota não encontrada." });
@@ -126,5 +126,7 @@ const deletarNota = async (req, res) => {
         return res.status(500).json({ message: "Erro ao deletar nota.", error: error.message });
     }
 };
+
+
 
 export default {notas, listas, procuraNota, atualizaNota, corrigirNota, deletarNota};

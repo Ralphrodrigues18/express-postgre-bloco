@@ -77,6 +77,7 @@ const login = async (req, res) => {
         return res.status(401).json({ message: "Senha incorreta" });
     }
 
+    const user_id = user.id;
     // Gera token JWT
     const token = jwt.sign({ id: user_id }, process.env.JWT_SECRET, { expiresIn: '1d' });
 
@@ -84,4 +85,4 @@ const login = async (req, res) => {
 };
 
 
-export default user-services;
+export default { register, login };
