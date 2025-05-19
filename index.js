@@ -5,6 +5,8 @@ import sequelize from './src/database/db.js';
 import User from './src/models/usuario.js';
 import Notas from './src/models/notas.js';
 import './src/models/relacionamentos.js'; 
+import cors from 'cors';
+
 
 dotenv.config();
 
@@ -21,7 +23,7 @@ dotenv.config();
 })();
 
 const app = express();
-
+app.use(cors())
 app.use(express.json());
 app.use(router);
 
